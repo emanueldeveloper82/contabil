@@ -6,6 +6,7 @@ import br.com.contabil.repository.ContaRepository;
 import br.com.contabil.service.ContaService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -34,21 +35,15 @@ public class ContaServiceImpl implements ContaService {
      * @return
      */
     @Override
-    public Optional<Conta> salvar(ContaDTO contaDTO) {
+    public ResponseEntity<?> salvar(ContaDTO contaDTO) {
 
-        Optional<Conta> usuarioOptional = Optional.empty();
 
-        if(contaDTO.getId() != null) {
-            usuarioOptional = repository.findById(contaDTO.getId());
-        }
-
-        if (usuarioOptional.isEmpty()) {
-           return Optional.of(repository.save(modelMapper.map(contaDTO, Conta.class)));
-        } else {
-            if (usuarioOptional.get().getId().equals(contaDTO.getId())) {
-                return Optional.of(repository.save(modelMapper.map(contaDTO, Conta.class)));
-            }
-            return usuarioOptional;
+        try {
+            Conta conta = repository.save(modelMapper.map(contaDTO, Conta.class));
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(modelMapper.map(conta, ContaDTO.class));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Erro ao tentar salvar uma conta.");
         }
     }
 
