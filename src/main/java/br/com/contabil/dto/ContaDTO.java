@@ -30,6 +30,8 @@ public class ContaDTO {
     @NotNull(message = "O campo Valor Original não pode ser vazio.")
     private BigDecimal valorOriginal;
 
+    private int qtdDiasAtraso;
+
     @NotNull(message = "O campo Data de Vencimento não pode ser vazio.")
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataVencimento;
