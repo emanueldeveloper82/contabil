@@ -3,14 +3,11 @@ package br.com.contabil.entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -43,11 +40,19 @@ public class Conta implements Serializable {
     @Column(name = "VALOR_ORIGINAL", nullable = false)
     private BigDecimal valorOriginal;
 
+    @Column(name = "VALOR_CORRIGIDO")
+    private BigDecimal valorCorrigido;
+
+    @Column(name = "QTD_DIAS_ATRASO")
+    private Long qtdDiasAtraso;
+
     @Column(name = "DATA_VENCIMENTO", nullable = false)
     private LocalDate dataVencimento;
 
     @Column(name = "DATA_PAGAMENTO", nullable = false)
     private LocalDate dataPagamento;
 
+    @Column(name = "DATA_CADASTRO")
+    private LocalDate dataCadastro;
 
 }
