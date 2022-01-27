@@ -56,13 +56,13 @@ public class ContaServiceImpl implements ContaService {
     @Override
     public ResponseEntity<?> remover(ContaDTO contaDTO) {
 
-        Optional<Conta> usuarioOptional = Optional.empty();
+        Optional<Conta> optionalConta = Optional.empty();
 
         if(contaDTO.getId() != null) {
-            usuarioOptional = repository.findById(contaDTO.getId());
+            optionalConta = repository.findById(contaDTO.getId());
         }
 
-        if (usuarioOptional.isEmpty()) {
+        if (!optionalConta.isEmpty()) {
             repository.delete(modelMapper.map(contaDTO, Conta.class));
             return ResponseEntity.ok().body("Conta removida com sucesso.");
         } else {

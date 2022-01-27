@@ -20,7 +20,7 @@ import javax.validation.Valid;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/conta/")
-@Api(value = "API de Cadastro de Usuario")
+@Api(value = "API de Cadastro de Contas a Pagar.")
 @CrossOrigin(origins = "*")
 public class ContaController {
 
