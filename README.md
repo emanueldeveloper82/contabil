@@ -19,12 +19,14 @@ Trabalho na área de tecnologia desde 2006.
 Para o desenvolvimento deste projeto utilizei as seguintes tecnologias:
 
 - Java 11;
-- Spring Boot 2.6.2;
-- Springfox Swagger2 2.8.0;
+- Spring Boot 2.6.3;
 - Spring Data JPA 2.6.0;
+- Spring Validator 2.2.1;
+- Springfox Swagger2 2.8.0;
 - Gradle 7.3;
 - FlyWay
 - Lombook;
+- ModelMapper version: 2.4.2;
 - PostgreSql;
 - JaCoco;
 
