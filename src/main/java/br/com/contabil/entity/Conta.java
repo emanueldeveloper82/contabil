@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
- * Entidade que representa um usuario
+ * Entidade que representa uma conta
  * @author emanuel developer
  *
  */
@@ -29,9 +29,8 @@ public class Conta implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_SEQ")
-    @SequenceGenerator(name = "CONTA_SEQ", sequenceName = "CONTA_SEQ", schema = "CONTABILIDADE", allocationSize = 1)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", columnDefinition = "serial")
     private Long id;
 
     @Column(name = "NOME", nullable = false)
