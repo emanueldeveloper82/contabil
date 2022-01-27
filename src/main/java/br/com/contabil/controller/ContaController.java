@@ -1,7 +1,6 @@
 package br.com.contabil.controller;
 
 import br.com.contabil.dto.ContaDTO;
-import br.com.contabil.entity.Conta;
 import br.com.contabil.service.ContaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
