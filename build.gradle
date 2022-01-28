@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.6.3'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'jacoco'
 }
 
 group = 'br.com'
@@ -36,4 +37,40 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+
+test {
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test
+	afterEvaluate {
+		classDirectories.setFrom(files(classDirectories.files.collect {
+			fileTree(dir: it, exclude: [
+					"br/com/contabil/entity",
+					"br/com/contabil/dto",
+					"br/com/contabil/repository",
+					"br/com/contabil/controller",
+					"br/com/contabil/ContabilApplication.class",
+					"**/config/*"
+			])
+		}))
+	}
+}
+
+jacocoTestReport {
+	reports {
+		xml.required = false
+		csv.required = false
+		html.outputLocation = layout.buildDirectory.dir('jacoco')
+	}
+}
+
+jar {
+	manifest {
+		attributes 'Main-Class': 'br.com.contabil.ContabilApplication'
+	}
 }
