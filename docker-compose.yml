@@ -1,0 +1,21 @@
+version: '3.1'
+services:
+  API:
+    image: 'emanuel.developer82/contabil'
+    ports:
+      - "8095:8095"
+    environment:
+      - URL_DB=${URL_DB}
+      - USER_DB=${USER_DB}
+      - PASSWORD_DB=${PASSWORD_DB}
+
+  PostgreSQL:
+    image: postgres
+    ports:
+      - "8055:5432"
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_PASSWORD=${PASSWORD_DB}
+      - POSTGRES_USER=${USER_DB}
+      - POSTGRES_DB=${POSTGRES_DB}
