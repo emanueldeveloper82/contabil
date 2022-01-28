@@ -29,6 +29,22 @@ Para o desenvolvimento deste projeto utilizei as seguintes tecnologias:
 - ModelMapper version: 2.4.2;
 - PostgreSql;
 - JaCoco;
+- Docker;
+- Docker-compose;
+
+---
+## 💼 Pré-requisito para executar a aplicação 
+
+- Ter o Docker instalado;
+- Ter o docker compose instalado;
+- Criar um arquivo .env na raiz do projeto.
+- URL_DB=jdbc:postgresql://PostgreSQL:5432/SEU_DATABASE
+- USER_DB=SEU_USUARIO
+- PASSWORD_DB=SUA_SENHA
+- POSTGRES_DB=SEU_DATABASE
+- Executar a aplicação com o seguinte comando abaixo: 
+- docker-compose --env-file .env  up
+
 
 ---
 
