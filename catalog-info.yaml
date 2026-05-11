@@ -13,4 +13,3 @@ spec:
   system: banking-system
   framework: spring-boot
   language: java
-  owner: group:default/engineering
